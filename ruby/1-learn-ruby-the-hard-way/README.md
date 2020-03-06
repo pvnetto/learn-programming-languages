@@ -6,6 +6,9 @@ Ruby is an object oriented scripting language. It's mainly used for web developm
 - No semicolon
 - Variable/function names with snake_case
 - Class names with PascalCase
+- Blocks start with a keyword and end with the `end` keyword.
+    - This means conditionals, loops, functions, classes, modules etc are all defined this way
+    - Identation is optional but highly recommended 
 
 
 ## I/O
@@ -22,9 +25,7 @@ Variables in Ruby must always be initialized with a value.
 <var_name> = <value>
 ```
 
-
-## Types
-
+### Types
 
 #### numbers
 Integers or floats
@@ -43,7 +44,12 @@ Integers or floats
     - str.to_i/f: Converts string to integer/float
 
 
-## Functions
+## Structures
+
+### Conditionals
+
+
+### Functions
 Functions are defined using the following syntax:
 
 ```
@@ -52,7 +58,7 @@ def <func_name>(<args>)
 end
 ```
 
-## Classes
+### Classes
 
 
 ## File I/O
