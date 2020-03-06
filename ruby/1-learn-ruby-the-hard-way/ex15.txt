@@ -1,0 +1,7 @@
+This file
+
+will be read
+
+by a Ruby script
+
+which is nice

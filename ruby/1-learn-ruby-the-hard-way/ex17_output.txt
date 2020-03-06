@@ -1,0 +1,5 @@
+This is the input file
+Whose content will be copied
+
+
+to the output file....
