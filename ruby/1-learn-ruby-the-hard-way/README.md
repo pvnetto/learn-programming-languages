@@ -3,13 +3,17 @@ Ruby is an object oriented scripting language. It's mainly used for web developm
 
 
 ## Conventions
-- No semicolon
+- Supports **semicolon**, but it's **not a good practice**
 - Variable/function names with snake_case
 - Class names with PascalCase
 - Blocks start with a keyword and end with the `end` keyword.
     - This means conditionals, loops, functions, classes, modules etc are all defined this way
     - Identation is optional but highly recommended 
 
+
+## Project Setup/Directories
+**READ MORE ABOUT GEMSPEC AND THE USAGE OF RAKE**
+- NAME = Name of your project
 
 ## I/O
 - puts(val): Prints to the console and skips a line
