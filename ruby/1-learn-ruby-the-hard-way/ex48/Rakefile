@@ -1,0 +1,9 @@
+# Run rake test in the root folder of the project to
+# run all the tests specified in t.test_files
+require 'rake/testtask'
+
+Rake::TestTask.new do |t|
+    t.libs << 'tests'
+    t.test_files = FileList['tests/test*.rb']
+    t.verbose = true
+end

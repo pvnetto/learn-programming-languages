@@ -7,6 +7,7 @@ class Component
     end
 end
 
+
 module ExampleMixin
 
     def implicit()
