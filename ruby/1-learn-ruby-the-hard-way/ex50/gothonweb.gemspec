@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-    spec.ex50       = "ex50"
+    spec.name       = "ex50"
     spec.version    = "1.0"
     spec.authors    = ["Paiva"]
     spec.email      = ["pvnetto1@gmail.com"]
@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
     spec.homepage   = "http://project-homepage.com/"
     spec.license    = "MIT"
 
-    spec.files          = ["lib/ex50.rb"]
-    spec.executables    = ["bin/ex50"]
-    spec.test_files     = ["tests/test_ex50.rb"]
+    spec.files          = ["lib/gothonweb.rb"]
+    spec.executables    = ["bin/app.rb"]
+    spec.test_files     = ["tests/test_gothonweb.rb"]
     spec.require_paths  = ["lib"]
 end
