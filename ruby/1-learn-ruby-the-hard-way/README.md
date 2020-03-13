@@ -105,6 +105,14 @@ Stores key-value pairs, just like JS and Python objects.
 
 ### Conditionals
 
+Ruby uses `if`, `elsif` and `else` for conditional clauses, which is very similar to Python. Consecutive uses of `if` with `elsif/else` count as a single block, so you only have to use `end` once per conditional block. This syntax can be described as:
+```
+<if> condition
+    ...
+<elsif/else>
+    ...
+end
+```
 
 ### Loops
 
@@ -122,6 +130,52 @@ end
 
 ### Classes
 
+Classes in Ruby are declared using the follow syntax:
+
+```
+<class_name>
+    def initialize()
+        @<property_name> = <value>
+    end
+end
+```
+
+- class.new(): Creates an instance of the class
+    ```ruby
+    my_var = MyClass.new()
+    ```
+
+- initialize: Constructor for Ruby classes.
+    ```ruby
+    def initialize()
+        ...
+    end
+    ```
+
+- @: Prefixing a variable with @ scopes the variable to the class, making it accessible to all of its methods.
+    ```ruby
+    @my_var = 30
+    ```
+
+- @@: Prefixing a variable with @@ makes it static, so its value is shared between all instances of the class.
+    ```ruby
+    @@my_static_var = 'This value is shared.'
+    ```
+
+- attr_reader: Generates a getter for a class property
+    ```ruby
+    attr_reader :my_var     # Creates a getter for @my_var
+    ```
+
+- attr_writer: Generates a setter for a class property
+    ```ruby
+    attr_writer :my_var     # Creates a setter for @my_var
+    
+    ####
+    ####
+
+    my_instance.my_var = 'new val'
+    ```
 
 ### Modules
 **Search for :: operator, read ruby docs on modules**
@@ -181,3 +235,8 @@ declaring exceptions.
 ## Weird parts
 - Functions can have some unusual characters in their names, like '?'
     - EX: File.exists? is a valid function name...weird, I know
+
+
+## References
+- https://ruby-doc.com/docs/
+- http://ruby-for-beginners.rubymonstas.org/advanced/
