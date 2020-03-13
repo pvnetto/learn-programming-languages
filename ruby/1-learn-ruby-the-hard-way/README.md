@@ -33,11 +33,21 @@ Variables in Ruby must always be initialized with a value.
 
 #### numbers
 Stores integers
-- x = 1     # Integer
+
+- Declaration:
+```ruby
+x = 100     # Integer
+```
+
 
 #### floats
 Stores floating-point numbers
-- x = 1.0   # Float
+
+- Declaration:
+```ruby
+x = 3.1415   # Float
+```
+
 
 #### strings
 - Declaration: "content" or 'content'
@@ -50,9 +60,11 @@ Stores floating-point numbers
     - str.chomp: Removes carriage return characters from end of string, like \r, \n
     - str.to_i/f: Converts string to integer/float
 
+
 #### null
 The null value for Ruby is the reserved keyword `nil`.
 - my_var = nil
+
 
 #### symbols
 Symbols are a Ruby-exclusive type of data. They're used to **declare identifiers**, which look a lot like strings, except they're immutable and unique, that is, when using a symbol or assigning a variable to it, it's guaranteed that the same value is being referenced, as opposed to strings, that will force Ruby to create new instances and hence allocate more memory.
