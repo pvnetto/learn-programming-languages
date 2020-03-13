@@ -123,6 +123,9 @@ end
 ### Classes
 
 
+### Modules
+**Search for :: operator, read ruby docs on modules**
+
 ## File I/O
 File I/O is usually initialized with `open(path)`, which returns a `File` object from the specified path.
 File objects can be manipulated through their methods, which are very similar to Python's methods for file I/O.

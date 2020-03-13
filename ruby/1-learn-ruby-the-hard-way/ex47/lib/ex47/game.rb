@@ -7,6 +7,7 @@ class Room
     end
 
 
+    # Search for attr_reader
     attr_reader :name
     attr_reader :paths
     attr_reader :description
