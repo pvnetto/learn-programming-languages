@@ -15,6 +15,7 @@ Ruby is an object oriented scripting language. It's mainly used for web developm
 **READ MORE ABOUT GEMSPEC AND THE USAGE OF RAKE**
 - NAME = Name of your project
 
+
 ## I/O
 - puts(val): Prints to the console and skips a line
 - print(val): Prints to the console but doesn't skip a line
@@ -54,8 +55,8 @@ x = 3.1415   # Float
 - Multiline: """content""", '''content''' or %q{content}
 - Templates: "#{}"
 - Formatters:
-    - Declaration: x = "%{var_name}"
-    - Usage: x % {var_name: value}
+    - Declaration: `x = "%{var_name}"`
+    - Usage: `x % {var_name: value}`
 - Methods:
     - str.chomp: Removes carriage return characters from end of string, like \r, \n
     - str.to_i/f: Converts string to integer/float
@@ -63,7 +64,12 @@ x = 3.1415   # Float
 
 #### null
 The null value for Ruby is the reserved keyword `nil`.
-- my_var = nil
+
+- Declaration:
+```ruby
+my_var = nil
+```
+
 
 
 #### symbols
@@ -152,7 +158,7 @@ end
     end
     ```
 
-- @: Prefixing a variable with @ scopes the variable to the class, making it accessible to all of its methods.
+- @: Prefixing a class variable with @ makes it private scoped, that is, accessible from within the class, but not from outside.
     ```ruby
     @my_var = 30
     ```
@@ -162,23 +168,151 @@ end
     @@my_static_var = 'This value is shared.'
     ```
 
-- attr_reader: Generates a getter for a class property
+- attr_reader: Generates a getter for a class property, making it public.
     ```ruby
-    attr_reader :my_var     # Creates a getter for @my_var
+    attr_reader :my_var             # Creates a getter for @my_var
     ```
 
-- attr_writer: Generates a setter for a class property
-    ```ruby
-    attr_writer :my_var     # Creates a setter for @my_var
-    
-    ####
-    ####
+    Which is equivalent to:
 
-    my_instance.my_var = 'new val'
+    ```ruby
+    def my_var
+        return @my_var
+    end
     ```
+
+- attr_writer: Generates a setter for a class property. Note that this can be used to create custom setters, effectively enabling Ruby to create properties like C#.
+    ```ruby
+    attr_writer :my_var             # Creates a setter for @my_var
+    ```
+
+    Which is equivalent to:
+
+    ```ruby
+    def my_var=(value)
+        @my_var = value
+    end
+    ```
+
+- public, private, protected: Those keywords are used to control method access in Ruby classes
+    ```ruby
+    class MyClass
+        # initialize is private by default
+        def initialize()
+        end
+
+        # Methods initialized in the top level scope are public by default
+        def my_public_method()
+        end
+
+        # Methods initialized after the public/private/protected keyword are created within the appropriate scope
+        private
+        def my_private_method()
+        end
+
+        protected
+        def my_protected_method()
+        end
+    end
+    ```
+
+    Alternatively, you could also used the `public`, `private` and `protected` keywords like attr_reader and attr_writer, to specify a method's scope directly.
+
+    ```ruby
+    public :my_method, :my_other_method
+    private :my_new_private_method
+    ```
+
+- private_class_method: Use this keyword to make an internal method private
+    ```ruby
+    class MyNewClass
+        # Makes the new method private, essentially preventing the instancing of new objects from this class
+        private_class_method :new
+        ....
+    end
+    ```
+
+
+#### Extending classes
+Use the `<` operator in the definition of a class to inherit from a parent class.
+
+```ruby
+class A
+    def hello
+        puts 'hello'
+    end
+end
+
+# B extends A
+class B < A
+    def hello
+        # super: Calls method from super class
+        super()
+        puts ' world'
+    end
+end
+```
+
 
 ### Modules
-**Search for :: operator, read ruby docs on modules**
+Modules are defined using the following syntax:
+
+```
+<module_name>
+    # Variables are declared as usual
+    <my_var> = <value>
+
+    # Methods must be namespaced to the module name 
+    def <module_name>.<func_name>
+        ...
+    end
+
+    # Alternatively, you can namespace them to the self keyword
+    def self.<func_name>
+        ...
+    end
+end
+```
+
+
+They can be accessed from other files by using the `require` keyword.
+
+```ruby
+require "./my_module.rb"
+
+# Variables are accessed using the :: operator
+puts MyModule::my_var
+
+# Methods can be accessed using either :: or . operators
+MyModule::
+```
+
+
+#### Mixins
+When a class includes a module using the `include` keyword, it's methods and properties become available to that class, as if it they were implemented
+by that class itself. This is useful to avoid inheritance and make more modular code.
+
+```ruby
+module MyMixin
+    def show_name()
+        # Self refers to the class instance that includes this mixin
+        puts self.name
+    end
+end
+
+class MyClass
+    # show_name now becomes available to MyClass
+    include MyMixin
+
+    def initialize(name)
+        @name = name
+    end
+end
+
+a = MyClass.new()
+a.show_name()
+```
+
 
 ## File I/O
 File I/O is usually initialized with `open(path)`, which returns a `File` object from the specified path.
@@ -238,5 +372,5 @@ declaring exceptions.
 
 
 ## References
-- https://ruby-doc.com/docs/
+- https://ruby-doc.com/docs/ProgrammingRuby/html/index.html
 - http://ruby-for-beginners.rubymonstas.org/advanced/

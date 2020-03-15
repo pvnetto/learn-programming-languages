@@ -10,11 +10,23 @@ puts ExampleModule::sin(2)
 
 
 class Phonograph
-    include Namer
+    public
+        include Namer
 
-    def initialize(name)
-        @name = name
-    end
+        def initialize(name)
+            @name = name
+        end
+
+    protected
+        def hello
+            puts "Hello..."
+        end
+
+    private
+        def phonk
+            hello()
+            puts "Phonk!!"
+        end
 end
 
 
