@@ -15,7 +15,7 @@ class Renderer
         width, height, samples, file_name = [300, 300, 2, 'test_image']
 
         result = {
-            title: file_name,
+            file_name: file_name,
             width: width,
             height: height,
             data: ''

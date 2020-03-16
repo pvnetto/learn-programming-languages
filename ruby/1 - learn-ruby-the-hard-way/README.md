@@ -199,13 +199,13 @@ File I/O is usually initialized with `open(path)`, which returns a `File` object
 File objects can be manipulated through their methods, which are very similar to Python's methods for file I/O.
 Some of these methods are:
 
-- file.read: Returns file content as a string.
-- file.gets: Reads input from the file, until it reaches a \n character.
-- file.readline: Reads a line from the file
-- file.truncate: Empties the file
-- file.write(content): Writes content to the file
-- file.seek(0): Moves read/write location to start of file
-- file.close: Closes the file object, disabling I/O
+- **file.read**: Returns file content as a string.
+- **file.gets**: Reads input from the file, until it reaches a \n character.
+- **file.readline**: Reads a line from the file
+- **file.truncate**: Empties the file
+- **file.write(content)**: Writes content to the file
+- **file.seek(0)**: Moves read/write location to start of file
+- **file.close**: Closes the file object, disabling I/O
 
 To write to a file, do `open(path, 'w')`. This will open a file in write mode, so reading is disabled and writing
 is enabled.
