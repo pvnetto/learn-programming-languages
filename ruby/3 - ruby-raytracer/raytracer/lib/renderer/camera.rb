@@ -26,12 +26,12 @@ class Camera
     attr_reader :origin, :lower_left_corner, :horizontal, :vertical
 
     def raycast(u, v)
-        u_horizontal = horizontal * u
-        v_vertical = vertical * v
+        u_horizontal = self.horizontal * u
+        v_vertical = self.vertical * v
 
-        ray_end = lower_left_corner + u_horizontal + v_vertical
-        ray_dir = ray_end - origin
+        ray_end = self.lower_left_corner + u_horizontal + v_vertical
+        ray_dir = ray_end - self.origin
 
-        return Ray.new(origin, ray_dir)
+        return Ray.new(self.origin, ray_dir)
     end
 end

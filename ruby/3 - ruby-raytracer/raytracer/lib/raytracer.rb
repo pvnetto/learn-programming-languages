@@ -4,6 +4,9 @@ require './lib/types/vector3.rb'
 require './lib/types/ray.rb'
 require './lib/writers/writers.rb'
 
+
+start_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+
 def make_camera()
     look_from = Vector3.new(9, 3.5, 15)
     look_at = Vector3.new(0, 0, -1)
@@ -13,21 +16,17 @@ def make_camera()
     return Camera.new(look_from, look_at, Vector3::up, fov, aspect_ratio)
 end
 
-def getRender()
-    raytracer = Renderer.new(make_camera())
-    img_data = raytracer.trace()
-    return Writers.PPM(img_data)
-end
 
-vec_a = Vector3.new(0, 10, 0)
-vec_b = Vector3.new(30, 40, 60)
+raytracer = Renderer.new(make_camera())
 
-ray_a = Ray.new(
-    Vector3.new(0, 0, -10),
-    Vector3.new(0, 2, 3))
+img_data = raytracer.trace()
+trace_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+puts "Trace time: #{trace_time - start_time}"
 
-puts vec_a * vec_b
-puts ray_a.point_at(100)
-puts Vector3::cross(vec_a, vec_b)
+Writers.PPM(img_data)
+write_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+puts "Write time: #{write_time - trace_time}"
 
-print getRender()
+end_time = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+elapsed = end_time - start_time
+puts "Total time: #{elapsed}"

@@ -12,18 +12,18 @@ class Renderer
 
 
     def trace()
-        width, height, samples, file_name = [300, 300, 2, 'test_image']
+        width, height, samples, file_name = [1920, 1080, 2, 'test_image']
 
         result = {
             file_name: file_name,
             width: width,
             height: height,
-            data: ''
+            data: []
         }
 
         (0..height).each do |i|
             (0..width).each do |j|
-                pixel_color = Vector3.new()
+                pixel_color = Vector3::zero
                 (0..samples).each do |k|
                     random_u = rand()
                     random_v = rand()
@@ -40,9 +40,11 @@ class Renderer
                 pixel_color *= 255.99
                 pixel_color = Vector3::saturate(pixel_color)
 
-                result[:data] += pixel_color.to_s() + "\n"
+                result[:data].push(pixel_color.to_s())
             end
         end
+
+        result[:data] = result[:data].join("\n")
 
         return result
     end
