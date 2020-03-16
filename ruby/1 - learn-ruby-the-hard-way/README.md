@@ -12,8 +12,19 @@ Ruby is an object oriented scripting language. It's mainly used for web developm
 
 
 ## Project Setup/Directories
-**READ MORE ABOUT GEMSPEC AND THE USAGE OF RAKE**
-- NAME = Name of your project
+This is the recommended directory setup for Ruby GEM projects. Refer to [rubygems](https://guides.rubygems.org/make-your-own-gem/) for more info. NAME = Name of your project.
+
+    .
+    ├── bin                         # Executable files, must be .rb
+    │   └── NAME
+    ├── lib                         # GEM source code
+    │   └── NAME.rb
+    ├── test                        # Automated tests files.
+    │   └── test_NAME.rb            # Every test file should be named test_file-to-test.rb
+    ├── Rakefile                    # Configuration file for Rake, the default test runner for Ruby.
+    ├── NAME.gemspec                # Configuration file for Ruby gems. Refer to rubygems for more info.
+    └── README.md
+
 
 ## I/O
 - puts(val): Prints to the console and skips a line
