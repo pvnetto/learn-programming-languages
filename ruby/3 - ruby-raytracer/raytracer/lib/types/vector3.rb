@@ -33,6 +33,10 @@ class Vector3
             vec_a.x * vec_b.y - vec_a.y * vec_b.x)
     end
 
+    def Vector3.lerp(vec_a, vec_b, t)
+        return vec_a * (1 - t) + (vec_b * t)
+    end
+
     def Vector3.saturate(color)
         def self.sat(value)
             return [[value, 0.0].max, 255.0].min
