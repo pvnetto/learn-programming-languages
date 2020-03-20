@@ -1,10 +1,20 @@
 class Vector3
 
+    
     def initialize(x=0.0, y=0.0, z=0.0)
         @x = x
         @y = y
         @z = z
     end
+    
+    @@colors = {
+        white: Vector3.new(1, 1, 1),
+        black: Vector3.new(0, 0, 0),
+        red: Vector3.new(1, 0, 0),
+        green: Vector3.new(0, 1, 0),
+        blue: Vector3.new(0, 0, 1),
+        yellow: Vector3.new(0, 1, 1)
+    }
 
     attr_reader :x, :y, :z, :one
 
@@ -34,7 +44,7 @@ class Vector3
     end
 
     def Vector3.lerp(vec_a, vec_b, t)
-        return vec_a * (1 - t) + (vec_b * t)
+        return vec_a * (1.0 - t) + vec_b * t
     end
 
     def Vector3.saturate(color)
@@ -49,15 +59,19 @@ class Vector3
     end
 
     def Vector3.one
-        return Vector3.new(1, 1, 1)
+        return Vector3.new(1.0, 1.0, 1.0)
     end
 
     def Vector3.zero
-        return Vector3.new(0, 0, 0)
+        return Vector3.new(0.0, 0.0, 0.0)
     end
 
     def Vector3.up
-        return Vector3.new(0, 1, 0)
+        return Vector3.new(0.0, 1.0, 0.0)
+    end
+
+    def Vector3.colors
+        return @@colors
     end
 
 
@@ -121,9 +135,4 @@ class Vector3
     def to_s()
         return "#{self.x.to_i} #{self.y.to_i} #{self.z.to_i}"
     end
-end
-
-
-def cross(vec_a, vec_b)
-    return 'a'
 end

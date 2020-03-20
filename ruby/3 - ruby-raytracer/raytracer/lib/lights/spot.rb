@@ -3,9 +3,8 @@ require './lib/lights/positional.rb'
 class SpotLight < PositionalLight
 
     def initialize(intensity, look_at, position, cutoff_angle)
-        super(intensity)
-        @position = position
-        @look_at = look_at
+        super(intensity, position)
+        @look_at = (look_at - position).normalized
         @cutoff_angle = cutoff_angle
     end
 
