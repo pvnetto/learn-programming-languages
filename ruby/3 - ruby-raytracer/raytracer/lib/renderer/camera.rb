@@ -5,7 +5,7 @@ require 'cmath'
 class Camera
 
     def initialize(look_from, look_at, vec_up, fov, aspect_ratio)
-        theta = fov * 3.14 / 180.0
+        theta = fov * Math::PI / 180.0
         half_height = CMath.tan(theta / 2.0)
         half_width = aspect_ratio * half_height
         @origin = look_from

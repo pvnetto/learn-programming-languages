@@ -47,11 +47,11 @@ end
 
 def make_lights()
     return [
-        DirectionalLight.new(Vector3::colors[:white] / 2.0,   Vector3.new(3.0, 2.0, 0.0)),
+        # DirectionalLight.new(Vector3::colors[:white] / 2.0,   Vector3.new(3.0, 2.0, 0.0)),
         PointLight.new(Vector3::colors[:red] / 1.2,         Vector3.new(0.0, 1.0, 0.0)),
-        # SpotLight.new(Vector3.new(0.3, 0.9, 0.3),           Vector3.new(0, 0, -2), Vector3.new(0, 1, 2), 15),
-        # SpotLight.new(Vector3.new(0.7, 0.2, 0.2),           Vector3.new(-4, 0, -2), Vector3.new(0, 4, -2), 18),
-        # SpotLight.new(Vector3.new(0.7, 0.2, 0.2),           Vector3.new(4, 0, -2), Vector3.new(0, 4, 2), 18),
+        SpotLight.new(Vector3.new(0.3, 0.9, 0.3),           Vector3.new(0, 0, -2), Vector3.new(0, 1, 2), 15),
+        SpotLight.new(Vector3.new(0.7, 0.2, 0.2),           Vector3.new(-4, 0, -2), Vector3.new(0, 4, -2), 18),
+        SpotLight.new(Vector3.new(0.7, 0.2, 0.2),           Vector3.new(4, 0, -2), Vector3.new(0, 4, 2), 18),
     ]
 end
 
